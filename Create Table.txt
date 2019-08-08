@@ -1,0 +1,66 @@
+
+/* create table */
+CREATE TABLE IF NOT EXISTS `runoob_tbl`(
+   `runoob_id` INT UNSIGNED AUTO_INCREMENT,
+   `runoob_title` VARCHAR(100) NOT NULL,
+   `runoob_author` VARCHAR(40) NOT NULL,
+   `submission_date` DATE,
+   PRIMARY KEY ( `runoob_id` )
+)
+
+/* drop table */
+drop table table_name
+
+https://stackoverflow.com/questions/36690142/mysql-query-for-movies-with-multiple-genres-using-an-intermediary-table
+CREATE TABLE `movies` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL DEFAULT '',
+  `year` int NOT NULL,
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `genres` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `genres_in_movies` (
+  `genre_id` int NOT NULL,
+  `movie_id` int NOT NULL,
+  FOREIGN KEY (`genre_id`) REFERENCES `genres`(`id`),
+  FOREIGN KEY (`movie_id`) REFERENCES `movies`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+/* insert multiple observations */
+INSERT INTO 
+movies(id,title) 
+VALUES
+(1,'Zoolander',2001),
+(2,'Citizen kane',1941),
+(3,'Psycho'),1960;
+
+
+INSERT INTO 
+genres(id,name) 
+VALUES
+(1,'Comedy'),
+(2,'Horror'),
+(3,'Drama'),
+(4,'Suspense'),
+(5,'Romance'),
+(6,'Documentary');
+
+
+INSERT INTO 
+genres_in_movies(genre_id,movie_id) 
+VALUES
+(1,1),
+(3,2),
+(4,2),
+(2,3),
+(5,3),
+(4,3);
+
+
